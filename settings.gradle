@@ -1,0 +1,5 @@
+rootProject.name = 'epam-hw'
+
+include 'strings',
+        'intro',
+        'oop'
