@@ -1,43 +1,54 @@
 package task03;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * Created by wopqw on 25.09.16.
  */
 
-public class StarterKit {
+public class StarterKit<T> extends ArrayList<T> {
 
-    public ArrayList<Stationers> stationersList;
-
-    public StarterKit(Stationers... args){
-        stationersList = new ArrayList<>(Arrays.asList(args));
+    public StarterKit(){
+        super();
     }
 
-    public void add(Stationers stationer){
-        stationersList.add(stationer);
+    public StarterKit(T... t){
+        super(Arrays.asList(t));
     }
 
-    void add(Stationers... stationers){
-        stationersList.addAll(Arrays.asList(stationers));
+    public StarterKit(List<T> t){
+        super(t);
     }
 
-    int size(){
-        return stationersList.size();
-    }
-
-    Stationers get(int i){
-        return stationersList.get(i);
-    }
-
-    Stationers remove(int i){
-        return stationersList.remove(i);
-    }
-
-    boolean remove(Stationers stationersToRemove){
-        return stationersList.remove(stationersToRemove);
-    }
+//    public ArrayList<Stationers> stationersList;
+//
+//    public StarterKit(Stationers... args){
+//        stationersList = new ArrayList<>(Arrays.asList(args));
+//    }
+//
+//    public void add(Stationers stationer){
+//        stationersList.add(stationer);
+//    }
+//
+//    void add(Stationers... stationers){
+//        stationersList.addAll(Arrays.asList(stationers));
+//    }
+//
+//    int size(){
+//        return stationersList.size();
+//    }
+//
+//    Stationers get(int i){
+//        return stationersList.get(i);
+//    }
+//
+//    Stationers remove(int i){
+//        return stationersList.remove(i);
+//    }
+//
+//    boolean remove(Stationers stationersToRemove){
+//        return stationersList.remove(stationersToRemove);
+//    }
 
 //    Stationers bluePen = new Pen("Pilot","Blue",121.23,"Blue",false);
 //
