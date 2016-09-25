@@ -9,7 +9,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-abstract class Stationers {
+public abstract class Stationers {
     private String producer;
     private String color;
     private double price;

@@ -7,15 +7,15 @@ import java.util.Arrays;
  * Created by wopqw on 25.09.16.
  */
 
-class StarterKit {
+public class StarterKit {
 
-    private ArrayList<Stationers> stationersList;
+    public ArrayList<Stationers> stationersList;
 
-    StarterKit(Stationers... args){
+    public StarterKit(Stationers... args){
         stationersList = new ArrayList<>(Arrays.asList(args));
     }
 
-    void add(Stationers stationer){
+    public void add(Stationers stationer){
         stationersList.add(stationer);
     }
 
