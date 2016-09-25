@@ -20,6 +20,9 @@ public class StarterKit<T> extends ArrayList<T> {
         super(t);
     }
 
+//    public StarterKit sortByPrice(){
+//        return  super.stream().sorted()
+//    }
 //    public ArrayList<Stationers> stationersList;
 //
 //    public StarterKit(Stationers... args){
