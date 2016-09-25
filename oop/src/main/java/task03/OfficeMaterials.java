@@ -1,20 +1,18 @@
 package task03;
 
-import lombok.Data;
+import lombok.Getter;
 
 /**
  * Created by wopqw on 17.09.16.
  */
-@Data
-public abstract class OfficeMaterials extends Stationers {
+@Getter
+abstract class OfficeMaterials extends Stationers {
 
-    private String producer;
-    private String color;
     private String codeNumber;
 
-    public OfficeMaterials(String producer, String color, String codeNumber) {
+    OfficeMaterials(String producer, String color, double price, String codeNumber) {
 
-        super(producer, color);
+        super(producer, color, price);
         this.codeNumber = codeNumber;
     }
 }

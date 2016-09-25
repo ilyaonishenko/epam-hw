@@ -1,22 +1,19 @@
 package task03;
 
-import lombok.Data;
+import lombok.Value;
 
 /**
  * Created by wopqw on 17.09.16.
  */
 
-@Data
+@Value
 public class Marker extends WritingMaterials {
 
-    private String producer;
-    private String color;
-    private String inkColor;
     private boolean isFull;
 
-    public Marker(String producer, String color, String inkColor, boolean isFull){
+    public Marker(String producer, String color,  double price, String inkColor, boolean isFull){
 
-        super(producer, color, inkColor);
+        super(producer, color, price, inkColor);
         this.isFull = isFull;
     }
 }

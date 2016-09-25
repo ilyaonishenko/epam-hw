@@ -1,21 +1,19 @@
 package task03;
 
-import lombok.Data;
+import lombok.Getter;
 
 /**
  * Created by wopqw on 17.09.16.
  */
 
-@Data
-public abstract class WritingMaterials extends Stationers {
+@Getter
+abstract class WritingMaterials extends Stationers {
 
-    private String producer;
-    private String color;
     private String inkColor;
 
-    public WritingMaterials(String producer,String color, String inkColor){
+    WritingMaterials(String producer, String color,double price, String inkColor){
 
-        super(producer, color);
+        super(producer, color, price);
         this.inkColor = inkColor;
     }
 

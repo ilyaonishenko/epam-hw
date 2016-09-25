@@ -1,22 +1,19 @@
 package task03;
 
-import lombok.Data;
+import lombok.Value;
 
 /**
  * Created by wopqw on 17.09.16.
  */
 
-@Data
+@Value
 public class Pen extends WritingMaterials {
 
-    private String producer;
-    private String color;
-    private String inkColor;
     private boolean isGel;
 
-    public Pen(String producer, String color, String inkColor, boolean isGel){
+    public Pen(String producer, String color, double price, String inkColor, boolean isGel){
 
-        super(producer, color, inkColor);
+        super(producer, color, price, inkColor);
         this.isGel = isGel;
     }
 }

@@ -1,18 +1,14 @@
 package task03;
 
-import lombok.Data;
+import lombok.Getter;
 
 /**
  * Created by wopqw on 17.09.16.
  */
-@Data
-public abstract class DrawingMaterials extends Stationers {
+@Getter
+abstract class DrawingMaterials extends Stationers {
 
-    private String producer;
-    private String color;
-
-    public DrawingMaterials(String producer, String color){
-
-        super(producer, color);
+    DrawingMaterials(String producer, String color, double price){
+        super(producer, color, price);
     }
 }

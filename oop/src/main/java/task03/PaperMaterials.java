@@ -1,20 +1,18 @@
 package task03;
 
-import lombok.Data;
+import lombok.Getter;
 
 /**
  * Created by wopqw on 17.09.16.
  */
-@Data
-public abstract class PaperMaterials extends Stationers {
+@Getter
+abstract class PaperMaterials extends Stationers {
 
-    private String producer;
-    private String color;
     private int numberOfPages;
 
-    public PaperMaterials(String producer, String color, int numberOfPages){
+    PaperMaterials(String producer, String color, double price, int numberOfPages){
 
-        super(producer, color);
+        super(producer, color, price);
         this.numberOfPages = numberOfPages;
     }
 

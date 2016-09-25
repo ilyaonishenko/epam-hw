@@ -1,21 +1,18 @@
 package task03;
 
-import lombok.Data;
+import lombok.Value;
 
 /**
  * Created by wopqw on 17.09.16.
  */
-@Data
+@Value
 public class Protractor extends SchemeTools {
 
-    private String producer;
-    private String color;
-    private String unit;
     private double angle;
 
-    public Protractor(String producer, String color, String unit, double angle){
+    public Protractor(String producer, String color, String unit, double price, double angle){
 
-        super(producer, color, unit);
+        super(producer, color, unit, price);
         this.angle = angle;
     }
 }

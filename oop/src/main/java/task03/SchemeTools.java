@@ -1,20 +1,18 @@
 package task03;
 
-import lombok.Data;
+import lombok.Getter;
 
 /**
  * Created by wopqw on 17.09.16.
  */
-@Data
+@Getter
 public abstract class SchemeTools extends DrawingMaterials {
 
-    private String producer;
-    private String color;
     private String unit;
 
-    public SchemeTools(String producer, String color, String unit){
+    public SchemeTools(String producer, String color, String unit, double price){
 
-        super(producer, color);
+        super(producer, color, price);
         this.unit = unit;
     }
 }

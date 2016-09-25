@@ -1,21 +1,18 @@
 package task03;
 
-import lombok.Data;
+import lombok.Value;
 
 /**
  * Created by wopqw on 17.09.16.
  */
-@Data
+@Value
 public class Stickers extends OfficeMaterials {
 
-    private String producer;
-    private String color;
-    private String codeNumber;
     private String format;
 
-    public Stickers(String producer, String color, String codeNumber, String format){
+    public Stickers(String producer, String color, double price, String codeNumber, String format){
 
-        super(producer, color, codeNumber);
+        super(producer, color, price, codeNumber);
         this.format = format;
     }
 }

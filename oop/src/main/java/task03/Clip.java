@@ -1,21 +1,18 @@
 package task03;
 
-import lombok.Data;
+import lombok.Value;
 
 /**
  * Created by wopqw on 17.09.16.
  */
-@Data
+@Value
 public class Clip extends OfficeMaterials {
 
-    private String producer;
-    private String color;
-    private String codeNumber;
     private String material;
 
-    public Clip(String producer, String color, String codeNumber, String material){
+    public Clip(String producer, String color, double price, String codeNumber, String material){
 
-        super(producer, color, codeNumber);
+        super(producer, color, price, codeNumber);
         this.material = material;
     }
 }

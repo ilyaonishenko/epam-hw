@@ -1,20 +1,18 @@
 package task03;
 
-import lombok.Data;
+import lombok.Value;
 
 /**
  * Created by wopqw on 17.09.16.
  */
-@Data
+@Value
 public class Eraser extends DrawingMaterials {
 
-    private String producer;
-    private String color;
     private String shape;
 
-    public Eraser(String producer, String color, String shape){
+    public Eraser(String producer, String color, double price, String shape){
 
-        super(producer, color);
+        super(producer, color, price);
         this.shape = shape;
     }
 }

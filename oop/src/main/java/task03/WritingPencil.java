@@ -1,37 +1,18 @@
 package task03;
 
+import lombok.Value;
+
 /**
  * Created by wopqw on 17.09.16.
  */
+@Value
 public class WritingPencil extends WritingMaterials {
 
-    private String producer;
-    private String color;
-    private String inkColor;
     private boolean eraser;
 
-    public WritingPencil(String producer, String color, String inkColor, boolean eraser){
+    public WritingPencil(String producer, String color, double price, String inkColor, boolean eraser){
 
-        super(producer, color, inkColor);
+        super(producer, color, price, inkColor);
         this.eraser = eraser;
-    }
-
-    @Override
-    public String getProducer() {
-        return producer;
-    }
-
-    @Override
-    public String getColor() {
-        return color;
-    }
-
-    @Override
-    public String getInkColor() {
-        return inkColor;
-    }
-
-    public boolean hasEraser() {
-        return eraser;
     }
 }
