@@ -16,7 +16,7 @@ public class Employee {
 
     private String lastName;
 
-    private Cubicle cubicle;
+    private Cubicle<Stationers> cubicle;
 
     public double cost(){
         return cost(this);
@@ -24,7 +24,7 @@ public class Employee {
 
     public static double cost(Employee employee){
 
-        return employee.cubicle.stationersList.stream()
+        return employee.cubicle.stream()
                 .mapToDouble(Stationers::getPrice)
                 .sum();
     }

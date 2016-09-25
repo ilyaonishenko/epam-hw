@@ -2,20 +2,20 @@ package task02;
 
 import lombok.Value;
 import task03.StarterKit;
-import task03.Stationers;
+
+import java.util.Arrays;
 
 /**
  * Created by wopqw on 25.09.16.
  */
 @Value
-class Cubicle extends StarterKit {
+class Cubicle<T> extends StarterKit<T> {
 
-    Cubicle(Stationers... args){
-        super(args);
+    public Cubicle(){
+        super();
     }
 
-    Cubicle(Stationers stationers){
-        super(stationers);
+    public Cubicle(T... t){
+        super(Arrays.asList(t));
     }
-
 }
