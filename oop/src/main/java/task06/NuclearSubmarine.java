@@ -1,11 +1,13 @@
 package task06;
 
 import lombok.Data;
+import task07.CustomAnnotation;
 
 /**
  * Created by wopqw on 25.09.16.
  */
 @Data
+@CustomAnnotation(info = "NuclearSubmarineClass")
 public class NuclearSubmarine {
 
     private String name;
