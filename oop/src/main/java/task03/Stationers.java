@@ -1,13 +1,13 @@
 package task03;
 
 import lombok.AllArgsConstructor;
-import lombok.Value;
+import lombok.Getter;
 
 /**
  * Created by wopqw on 17.09.16.
  */
 
-@Value
+@Getter
 @AllArgsConstructor
 abstract class Stationers {
     private String producer;
