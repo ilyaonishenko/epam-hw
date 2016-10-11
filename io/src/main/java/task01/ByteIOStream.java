@@ -14,7 +14,7 @@ import java.util.Optional;
 /**
  * Created by wopqw on 11.10.16.
  */
-interface ByteIOStreams {
+interface ByteIOStream {
 
     @SneakyThrows
     static String readFromFile(String filePath){

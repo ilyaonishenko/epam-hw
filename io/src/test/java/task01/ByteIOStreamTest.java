@@ -7,31 +7,31 @@ import static org.junit.Assert.assertThat;
 /**
  * Created by wopqw on 11.10.16.
  */
-public class ByteIOStreamsTest {
+public class ByteIOStreamTest {
 
     private static final String filePath1 = "src/test/resources/hello.txt";
     private static final String filePath2 = "src/test/resources/writeHello.txt";
-    private static final String filePath3 = "src/main/java/task01/ByteIOStreams.java";
+    private static final String filePath3 = "src/main/java/task01/ByteIOStream.java";
 
     @Test
     public void readFromFileTest() throws Exception {
 
-        assertThat(ByteIOStreams.readFromFile(filePath1),is("Привет мир!"));
+        assertThat(ByteIOStream.readFromFile(filePath1),is("Привет мир!"));
     }
 
     @Test
     public void writeToFileTest() throws Exception {
 
         String text = "I wrote it in the file\nIn two lines";
-        ByteIOStreams.writeToFile(text,filePath2);
-        assertThat(ByteIOStreams.readFromFile(filePath2),is(text));
+        ByteIOStream.writeToFile(text,filePath2);
+        assertThat(ByteIOStream.readFromFile(filePath2),is(text));
     }
 
     @Test
     public void countKeywordAppereance(){
 
-        String fileInString = ByteIOStreams.readFromFile(filePath3);
-        HashMap<String, Integer> map = ByteIOStreams.processString(fileInString);
+        String fileInString = ByteIOStream.readFromFile(filePath3);
+        HashMap<String, Integer> map = ByteIOStream.processString(fileInString);
         assertThat(map.get("static"),is(3));
     }
 
