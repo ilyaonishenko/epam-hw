@@ -60,4 +60,10 @@ public interface SymbolIOStream {
 
         return answerMap;
     }
+
+    static void taskExample(String inputFile, String outputFile){
+
+        String inputText = readFromFile(inputFile);
+        writeToFile(processString(inputText).toString(),outputFile);
+    }
 }

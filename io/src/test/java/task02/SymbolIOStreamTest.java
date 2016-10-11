@@ -47,4 +47,10 @@ public class SymbolIOStreamTest {
                 is("It is new String and it will keeewwwqqee ewqwe"));
     }
 
+    @Test
+    public void readWriteProcessTest(){
+
+        SymbolIOStream.taskExample(filePath3,"src/test/resources/symbolOutput.txt");
+
+    }
 }

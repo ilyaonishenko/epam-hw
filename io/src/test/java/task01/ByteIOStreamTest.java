@@ -43,4 +43,11 @@ public class ByteIOStreamTest {
                 is("It is new String and it will keeewwwqqee ewqwe"));
     }
 
+    @Test
+    public void readWriteProcessTest(){
+
+        ByteIOStream.taskExample(filePath3,"src/test/resources/byteOutput.txt");
+
+    }
+
 }
