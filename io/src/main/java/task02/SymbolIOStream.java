@@ -12,6 +12,7 @@ import java.io.OutputStreamWriter;
  */
 public class SymbolIOStream implements IOStream {
 
+    @Override
     @SneakyThrows
     public String readFromFile(String filePath){
 
@@ -30,6 +31,7 @@ public class SymbolIOStream implements IOStream {
     }
 
 
+    @Override
     @SneakyThrows
     public void writeToFile(String text, String filePath){
 

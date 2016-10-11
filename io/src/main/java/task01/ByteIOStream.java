@@ -11,6 +11,7 @@ import java.io.FileOutputStream;
  */
 public class ByteIOStream implements IOStream {
 
+    @Override
     @SneakyThrows
     public String readFromFile(String filePath){
 
@@ -28,6 +29,7 @@ public class ByteIOStream implements IOStream {
     }
 
 
+    @Override
     @SneakyThrows
     public void writeToFile(String text, String filePath){
 
