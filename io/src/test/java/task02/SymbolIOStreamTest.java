@@ -16,27 +16,28 @@ public class SymbolIOStreamTest {
     private static final String filePath2 = "src/test/resources/writeHello2";
     private static final String filePath3 = "src/main/java/task01/ByteIOStream.java";
 
+    SymbolIOStream symbolStream = new SymbolIOStream();
 
     @Test
     public void readFromFile() throws Exception {
-        assertThat(SymbolIOStream.readFromFile(filePath1),is("Привет мир!"));
+        assertThat(symbolStream.readFromFile(filePath1),is("Привет мир!"));
     }
 
     @Test
     public void writeToFile() throws Exception {
 
         String text = "I wrote it in the file again\nIn three lines\nnow";
-        SymbolIOStream.writeToFile(text,filePath2);
-        assertThat(SymbolIOStream.readFromFile(filePath2),is(text));
+        symbolStream.writeToFile(text,filePath2);
+        assertThat(symbolStream.readFromFile(filePath2),is(text));
 
     }
 
     @Test
     public void countKeywordAppereance(){
 
-        String fileInString = SymbolIOStream.readFromFile(filePath3);
-        HashMap<String, Integer> map = SymbolIOStream.processString(fileInString);
-        assertThat(map.get("static"),is(3));
+        String fileInString = symbolStream.readFromFile(filePath3);
+        HashMap<String, Integer> map = symbolStream.processString(fileInString);
+        assertThat(map.get("new"),is(4));
     }
 
     @Test
@@ -50,7 +51,7 @@ public class SymbolIOStreamTest {
     @Test
     public void readWriteProcessTest(){
 
-        SymbolIOStream.taskExample(filePath3,"src/test/resources/symbolOutput.txt");
+        symbolStream.taskExample(filePath3,"src/test/resources/symbolOutput.txt");
 
     }
 }

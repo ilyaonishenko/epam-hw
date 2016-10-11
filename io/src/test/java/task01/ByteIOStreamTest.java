@@ -13,26 +13,28 @@ public class ByteIOStreamTest {
     private static final String filePath2 = "src/test/resources/writeHello.txt";
     private static final String filePath3 = "src/main/java/task01/ByteIOStream.java";
 
+    ByteIOStream byteStream = new ByteIOStream();
+
     @Test
     public void readFromFileTest() throws Exception {
 
-        assertThat(ByteIOStream.readFromFile(filePath1),is("Привет мир!"));
+        assertThat(byteStream.readFromFile(filePath1),is("Привет мир!"));
     }
 
     @Test
     public void writeToFileTest() throws Exception {
 
         String text = "I wrote it in the file\nIn two lines";
-        ByteIOStream.writeToFile(text,filePath2);
-        assertThat(ByteIOStream.readFromFile(filePath2),is(text));
+        byteStream.writeToFile(text,filePath2);
+        assertThat(byteStream.readFromFile(filePath2),is(text));
     }
 
     @Test
     public void countKeywordAppereance(){
 
-        String fileInString = ByteIOStream.readFromFile(filePath3);
-        HashMap<String, Integer> map = ByteIOStream.processString(fileInString);
-        assertThat(map.get("static"),is(3));
+        String fileInString = byteStream.readFromFile(filePath3);
+        HashMap<String, Integer> map = byteStream.processString(fileInString);
+        assertThat(map.get("new"),is(4));
     }
 
     @Test
@@ -46,7 +48,7 @@ public class ByteIOStreamTest {
     @Test
     public void readWriteProcessTest(){
 
-        ByteIOStream.taskExample(filePath3,"src/test/resources/byteOutput.txt");
+        byteStream.taskExample(filePath3,"src/test/resources/byteOutput.txt");
 
     }
 
