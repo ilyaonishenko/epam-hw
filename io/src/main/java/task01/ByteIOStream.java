@@ -4,8 +4,6 @@ import lombok.SneakyThrows;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Optional;
@@ -23,13 +21,12 @@ interface ByteIOStream {
 
         int data;
 
-        try (InputStreamReader isr = new InputStreamReader(
-                new FileInputStream(filePath))){
+        try (FileInputStream fis = new FileInputStream(filePath)){
 
-            while ((data = isr.read()) != -1) {
+            while ((data = fis.read()) != -1) {
                 sBuilder.append(( char ) data);
             }
-            return sBuilder.toString();
+            return new String(sBuilder.toString().getBytes("ISO-8859-1"),"UTF-8");
         }
     }
 
@@ -37,10 +34,10 @@ interface ByteIOStream {
     @SneakyThrows
     static void writeToFile(String text, String filePath){
 
-        try(OutputStreamWriter osw = new OutputStreamWriter(
-                new FileOutputStream(filePath))){
+        try(FileOutputStream fos =
+                    new FileOutputStream(filePath)){
 
-            osw.write(text);
+            fos.write(text.getBytes("ISO-8859-1"));
         }
     }
 
