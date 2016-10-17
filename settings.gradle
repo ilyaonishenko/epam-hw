@@ -4,4 +4,5 @@ include 'strings',
         'intro',
         'oop',
         'io',
-        'exceptions'
+        'exceptions',
+        'threads'
