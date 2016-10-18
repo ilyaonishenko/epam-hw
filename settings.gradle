@@ -5,4 +5,5 @@ include 'strings',
         'oop',
         'io',
         'exceptions',
-        'threads'
+        'threads',
+        'jdbc'
