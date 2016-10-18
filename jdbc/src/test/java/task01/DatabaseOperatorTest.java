@@ -14,6 +14,8 @@ import static org.junit.Assert.assertThat;
 /**
  * Created by wopqw on 18.10.16.
  */
+
+@SuppressWarnings("WeakerAccess")
 public class DatabaseOperatorTest {
 
 
@@ -37,7 +39,7 @@ public class DatabaseOperatorTest {
                     filter(
                             c -> c.getFirstName().equals("Chris")
                                     &&c.getLastName().equals("Schaefer"))
-                    .findAny().get(),is(customer));
+                    .findAny().orElseThrow(IllegalArgumentException::new),is(customer));
         }
     }
 
@@ -53,7 +55,7 @@ public class DatabaseOperatorTest {
                     filter(
                             c -> c.getFirstName().equals("Chris")
                                     &&c.getLastName().equals("Schaefer"))
-                    .findAny().get(),is(customer));
+                    .findAny().orElseThrow(IllegalArgumentException::new),is(customer));
 
             dOperator.updateLine(customerIvanov);
 
