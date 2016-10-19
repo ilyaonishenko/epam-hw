@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<library xmlns:xsi="http://helloworld.org"-->
+         <!--xsi:schemaLocation="http://helloworld.org library.xsd">-->
+<library xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://helloworld.org"
+    xsi:schemaLocation="http://helloworld.org library.xsd">
+    <book>
+        <name>1984</name>
+        <author>George Orwell</author>
+        <pages>384</pages>
+        <publisher>EKSMO</publisher>
+        <year>2010</year>
+        <onHang>true</onHang>
+    </book>
+    <book>
+        <name>Brave New World</name>
+        <author>Aldous Huxley</author>
+        <pages>400</pages>
+        <publisher>EKSMO</publisher>
+        <year>2007</year>
+        <onHang>false</onHang>
+    </book>
+    <book>
+        <name>Lord of the Flies</name>
+        <author>William Gerald Golding</author>
+        <pages>259</pages>
+        <publisher>AST</publisher>
+        <year>2015</year>
+        <onHang>true</onHang>
+    </book>
+    <book>
+        <name>We</name>
+        <author>Yevgeny Zamyatin</author>
+        <pages>200</pages>
+        <publisher>Piter</publisher>
+        <year>2016</year>
+        <onHang>true</onHang>
+    </book>
+</library>

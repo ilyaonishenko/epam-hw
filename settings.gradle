@@ -6,4 +6,5 @@ include 'strings',
         'io',
         'exceptions',
         'threads',
-        'jdbc'
+        'jdbc',
+        'xml'
