@@ -1,6 +1,7 @@
 package task02.common;
 
 import lombok.SneakyThrows;
+import lombok.extern.java.Log;
 
 import java.io.FileInputStream;
 import java.sql.Connection;
@@ -14,6 +15,7 @@ import java.util.function.Supplier;
 /**
  * Created by wopqw on 21.10.16.
  */
+@Log
 public class ConnectionPool implements AutoCloseable {
 
     private static BlockingQueue<Connection> freeConnections;
@@ -29,29 +31,27 @@ public class ConnectionPool implements AutoCloseable {
 
         int poolSize = Integer.parseInt(getValueAndRemoveKey(properties, "poolSize"));
 
-        freeConnections = new ArrayBlockingQueue<>(poolSize);
-        reservedConnections = new ArrayBlockingQueue<>(poolSize);
+        return create(poolSize,getValueAndRemoveKey(properties,"driver"),
+                getValueAndRemoveKey(properties,"url"));
+    }
 
-        BlockingQueue<ConnectionWrapper> connectionQueue = new ArrayBlockingQueue<>(poolSize);
-
-//        for (int i = 0; i < poolSize; i++)
-//            connectionQueue.add(
-//                    ConnectionWrapper.create(
-//                            DriverManager.getConnection(url, properties),
-//                            connectionQueue));
+    private static ConnectionPool create(Integer poolSize, String driver, String url){
 
         return new ConnectionPool(poolSize, () ->{
 
-            Class.forName(getValueAndRemoveKey(properties, "driver"));
-            String url = getValueAndRemoveKey(properties, "url");
-            String user = getValueAndRemoveKey(properties,"user");
-            String password = getValueAndRemoveKey(properties,"password");
-            return DriverManager.getConnection(url, user, password);
+            try {
+                Class.forName(driver);
+                return DriverManager.getConnection(url);
+            } catch (ClassNotFoundException | SQLException e){
+                e.printStackTrace();
+            }
+            return null;
         });
 
     }
 
     private ConnectionPool(int poolSize, Supplier<Connection> connectionSupplier) {
+
         freeConnections = new ArrayBlockingQueue<>(poolSize);
         reservedConnections = new ArrayBlockingQueue<>(poolSize);
 
@@ -75,10 +75,12 @@ public class ConnectionPool implements AutoCloseable {
     }
 
     private static String getValueAndRemoveKey(Properties properties, String key) {
+
         return (String) properties.remove(key);
     }
 
     private ConnectionWrapper wrap(Connection connection) {
+
         return new ConnectionWrapper(connection) {
             @Override
             public void close() throws SQLException {
@@ -104,6 +106,7 @@ public class ConnectionPool implements AutoCloseable {
     }
 
     public Connection getConnection() {
+
         if (isClosing) {
             throw new RuntimeException("Cannot get connection from the closing pool");
         }

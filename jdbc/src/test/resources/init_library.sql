@@ -4,9 +4,8 @@ CREATE TABLE Book (
   author    VARCHAR(60) NOT NULL,
   publisher VARCHAR(60) NOT NULL,
 
-  UNIQUE (name,author)
 );
 
-INSERT INTO Book ("1984","George Orwell","AST");
-INSERT INTO Book ("Brave New World","Aldous Huxley","EKSMO");
-INSERT INTO Book ("WE","Yevgeny Zamyatin","Piter");
+INSERT INTO Book (name,author,publisher) VALUES ('1984','George Orwell','AST');
+INSERT INTO Book (name,author,publisher) VALUES ('Brave New World','Aldous Huxley','EKSMO');
+INSERT INTO Book (name,author,publisher) VALUES ('WE','Yevgeny Zamyatin','Piter');
