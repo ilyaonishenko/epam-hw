@@ -1,0 +1,6 @@
+apply plugin: 'war'
+
+dependencies {
+    providedCompile 'org.apache.tomcat:tomcat-api:+'
+    providedCompile 'org.apache.tomcat:tomcat-jsp-api:+'
+}
