@@ -27,7 +27,7 @@ public class H2PersonDAO implements PersonDAO {
     @SneakyThrows
     public Collection<Person> getAll() {
 
-        Collection<Person> books = new HashSet<>();
+        Collection<Person> persons = new HashSet<>();
 
         try(Connection connection = connectionPool.getConnection()){
 
@@ -35,7 +35,7 @@ public class H2PersonDAO implements PersonDAO {
             ResultSet rs = statement.executeQuery("SELECT id, first_name, last_name, email, password FROM Person");
             Person.PersonBuilder bookBuilder = Person.builder();
             while (rs.next()){
-                books.add(
+                persons.add(
                         bookBuilder
                                 .id(rs.getInt("id"))
                                 .firstName(rs.getString("first_name"))
@@ -46,6 +46,6 @@ public class H2PersonDAO implements PersonDAO {
             }
 
         }
-        return books;
+        return persons;
     }
 }
