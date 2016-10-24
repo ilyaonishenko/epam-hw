@@ -44,8 +44,25 @@ public class H2PersonDAO implements PersonDAO {
                                 .password(rs.getString("password"))
                                 .build());
             }
-
         }
         return persons;
+    }
+
+    @Override
+    @SneakyThrows
+    public Collection<String> getPersonRole(Person person) {
+
+        HashSet<String> personRoles = new HashSet<>();
+
+        try(Connection connection =  connectionPool.getConnection()){
+
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT role FROM Roles WHERE email = '"+
+                    person.getEmail()+"'");
+            while(rs.next()) {
+                personRoles.add(rs.getString(1));
+            }
+        }
+        return personRoles;
     }
 }

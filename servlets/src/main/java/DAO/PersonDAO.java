@@ -8,10 +8,11 @@ import java.util.Optional;
 /**
  * Created by wopqw on 23.10.16.
  */
-@FunctionalInterface
 public interface PersonDAO {
 
     Collection<Person> getAll();
+
+    Collection<String> getPersonRole(Person person);
 
     @SuppressWarnings("unused")
     default Optional<Person> getById(long id){
@@ -20,10 +21,11 @@ public interface PersonDAO {
                 .findAny();
     }
 
-    default boolean isRegistred(String login, String hash){
+    default Optional<Person> isRegistred(String login, String hash){
 
         return getAll().stream()
                 .filter(p -> p.getEmail().equals(login))
-                .anyMatch(p -> p.getPassword().equals(hash));
+                .filter(p -> p.getPassword().equals(hash))
+                .findAny();
     }
 }

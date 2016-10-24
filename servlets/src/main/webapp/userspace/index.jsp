@@ -15,7 +15,15 @@
   <body>
   
   <jsp:useBean id="persons" class="java.util.HashSet" scope="request"/>
-
+  <% Person person = (Person)session.getAttribute("KEY");%>
+  <% HashSet<String> roles = (HashSet<String>)session.getAttribute("ROLE");%>
+    <h3> Hello, <%=person.getFirstName()%> !<h3/>
+      <h4>You a logged as:</h4>
+      <%
+        for (String s:roles) {%>
+      <br><%= s%>
+      <%}%>
+        <h5>List of users:</h5>
   <table>
     <tr>
       <th>id</th>

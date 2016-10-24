@@ -4,6 +4,7 @@ import lombok.extern.java.Log;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 /**
@@ -11,14 +12,17 @@ import java.io.IOException;
  */
 
 @Log
-@WebFilter("/userspace/")
+@WebFilter("/*")
 public class LogFilter implements Filter {
 
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+            throws IOException, ServletException {
 
-        log.info("in method doGet");
+        HttpServletRequest httpRequest = (HttpServletRequest)request;
+        String s = httpRequest.getRequestURI();
+        log.info("someone want's to get to "+ s);
         chain.doFilter(request, response);
-        log.info("out method doGet");
+        log.info("someone is in "+ s);
     }
 }

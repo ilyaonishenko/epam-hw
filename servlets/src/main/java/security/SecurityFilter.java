@@ -2,6 +2,7 @@ package security;
 
 import DAO.PersonDAO;
 import filters.HttpFilter;
+import model.Person;
 
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * Created by wopqw on 24.10.16.
@@ -24,6 +26,7 @@ public class SecurityFilter implements HttpFilter {
 
     @SuppressWarnings("FieldCanBeLocal")
     private static String KEY = "KEY";
+    private static String ROLE = "ROLE";
 
     private PersonDAO personDAO;
 
@@ -48,10 +51,12 @@ public class SecurityFilter implements HttpFilter {
 
             try {
 
+                Optional<Person> authorize = authorize(parameterMap);
+                if(authorize.isPresent()) {
 
-                if(authorize(parameterMap)) {
-
-                    session.setAttribute(KEY,new Object());
+                    Person person = authorize.get();
+                    session.setAttribute(KEY, person);
+                    session.setAttribute(ROLE,personDAO.getPersonRole(person));
                     chain.doFilter(request, response);
                 }
                 else {
@@ -70,7 +75,7 @@ public class SecurityFilter implements HttpFilter {
         }
     }
 
-    private boolean authorize(Map<String, String[]> parameterMap) throws NoSuchAlgorithmException {
+    private Optional<Person> authorize(Map<String, String[]> parameterMap) throws NoSuchAlgorithmException {
 
         String login = parameterMap.get("j_username")[0];
         String password = parameterMap.get("j_password")[0];
