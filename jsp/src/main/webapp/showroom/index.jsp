@@ -16,12 +16,34 @@
     </tr>
     <% for (Gun gun: (HashSet<Gun>) guns){%>
     <tr>
-        <td><%=gun.getName()%></td>
-        <td><%=gun.getCaliber()%></td>
-        <td><%=gun.getPrice()%></td>
+        <form name="gunForm" method="post" action="/showroom/">
+            <td><input type="text" name="<%= gun.getId()%>" value="<%=gun.getName()%>" disabled/></td>
+            <td><input type="text" name="<%= gun.getId()%>" value="<%=gun.getCaliber()%>" disabled/></td>
+            <td><input type="text" name="<%= gun.getId()%>" value="<%=gun.getPrice()%>" disabled/></td>
+            <td><input id="editButton" type="button" value="Edit" onclick="enable(<%= gun.getId()%>)"/></td>
+            <td><input id='saveButton' type="submit" value="Save" onclick="disable(<%= gun.getId()%>)"/></td>
+        </form>
     </tr>
     <%}%>
 </table>
-
 </body>
+
+<script>
+    function disable(a){
+        var inputs = document.getElementsByTagName('input');
+        for(i = 0; i<inputs.length; i++){
+            if(inputs[i].name == a) {
+                inputs[i].disabled = true;
+            }
+        }
+    }
+    function enable(a) {
+        var inputs = document.getElementsByTagName('input');
+        for(i = 0; i<inputs.length; i++){
+            if(inputs[i].name==a) {
+                inputs[i].disabled = false;
+            }
+        }
+    }
+</script>
 </html>
