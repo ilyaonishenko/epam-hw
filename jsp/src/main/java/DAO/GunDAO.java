@@ -17,4 +17,6 @@ public interface GunDAO {
                 .filter(g -> g.getId() == id)
                 .findAny();
     }
+
+    void update(Gun gun);
 }

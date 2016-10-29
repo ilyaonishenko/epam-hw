@@ -17,6 +17,7 @@ public class Initer implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
+
         ServletContext servletContext = sce.getServletContext();
 
         //noinspection Split Declaration
